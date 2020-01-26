@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "title": "Asics 478",
+    "description": "Asics 478 lore impsum",
+    "price": 100.00,
+    "country": {
+      "code": "US",
+      "name": "United States"
+    }
+  },
+  {
+    "id": 2,
+    "title": "NIke 54",
+    "description": "NIke large foot",
+    "price": 89.90,
+    "country": {
+      "code": "US",
+      "name": "United States"
+    }
+  },
+  {
+    "id": 3,
+    "title": "Asics 567",
+    "description": "The best bla bla",
+    "price": 320.99,
+    "country": {
+      "code": "CA",
+      "name": "Canada"
+    }
+  },
+  {
+    "id": 4,
+    "title": "Puma 4",
+    "description": "Puma",
+    "price": 70.00,
+    "country": {
+      "code": "CA",
+      "name": "Canada"
+    }
+  },
+  {
+    "id": 5,
+    "title": "Asics 555",
+    "description": "Great",
+    "price": 50.00,
+    "country": {
+      "code": "US",
+      "name": "United States"
+    }
+  }
+]
