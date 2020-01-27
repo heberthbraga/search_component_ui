@@ -9,14 +9,20 @@ const SubHeader = ({ results }) => (
     <ResultsBox>
       <ResultsText>
         {
-          `Found ${results.length} result(s) for`
+          `Found ${results.length} result(s)`
+        }
+        {
+          results.term &&
+          <TermWrapper>
+            for
+            <span>
+              {
+                `"${results.term}"`
+              }
+            </span>
+          </TermWrapper>
         }
       </ResultsText>
-      <ResultsTarget>
-        {
-          results.term != '' ? `"${results.term}"` : 'all items.'
-        }
-      </ResultsTarget>
     </ResultsBox>
     <SortBox>
       <SortContainer>
@@ -48,15 +54,9 @@ const ResultsText = styled.span`
   font-style: normal!important;
   text-transform: none!important;
   padding-left: 15px;
+  display: flex;
+  flex-direction: row;
 `
-
-const ResultsTarget = styled.span`
-  font-size: 13px;
-  color: #c45500 !important; 
-  padding-left: 5px;
-  font-weight: 700;
-`
-
 const SortBox = styled.div`
   width: 30%;
   display: flex;
@@ -67,6 +67,18 @@ const SortBox = styled.div`
 
 const SortContainer = styled.div`
   padding-right: 40px;
+`
+
+const TermWrapper = styled.div`
+  padding-left: 5px;
+  
+  &
+  span {
+    font-size: 13px;
+    color: #c45500 !important; 
+    padding-left: 5px;
+    font-weight: 700;
+  }
 `
 
 export default SubHeader

@@ -2,8 +2,8 @@ import types from '../types'
 
 import ProductsApiService from '../api/products'
 
-export const search = (searchTerm, aggregation={}) => dispatch => {
-  console.log("Start searching term: ", searchTerm)
+export const search = (searchTerm, aggregation) => dispatch => {
+  console.log("Start searching term and aggregation ", searchTerm + ', ' + JSON.stringify(aggregation))
 
   dispatch({ type: types.SEARCH_TERM, payload: searchTerm })
 
@@ -15,3 +15,7 @@ export const search = (searchTerm, aggregation={}) => dispatch => {
     }
   )
 }
+
+export const handleSortOption = (option) => dispatch => ( dispatch({ type: types.SORT_PRODUCTS, payload: option }) )
+
+export const handleFilter = (options) => dispatch => ( dispatch({ type: types.FILTER_PRODUCTS, payload: options }) )

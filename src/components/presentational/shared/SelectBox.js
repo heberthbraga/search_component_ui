@@ -12,8 +12,11 @@ const loadOptions = (options) => (
   })
 )
 
-const SelectBox = ({}) => (
-  <Select>
+const SelectBox = ({ handleSelect }) => (
+  <Select
+    name="sort"
+    onChange={handleSelect}
+  >
     <option value={sortOptions.default.value} hidden>
       {
         sortOptions.default.name
