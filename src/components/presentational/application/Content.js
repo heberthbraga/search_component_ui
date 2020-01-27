@@ -1,13 +1,13 @@
 import React from 'react'
 
 import styled from 'styled-components'
-import Nav from '../navigation/Nav'
+import NavComponent from '../../container/navigation/NavComponent'
 import Article from './Article'
 
 const Content = ({ children, displayNav }) => (
   <Container>
     {displayNav &&
-      <Nav />
+      <NavComponent />
     }
     <Article>
       {

@@ -8,12 +8,14 @@ import storage from 'redux-persist/lib/storage' // defaults to localStorage for 
 import { isDevelopment } from '../helpers'
 
 import products from '../reducers/products'
+import countries from '../reducers/countries'
 
 export const history = createBrowserHistory()
 
 const createRootReducer = (history) => combineReducers({
   router: connectRouter(history),
-  products
+  products,
+  countries
 })
 
 const persistConfig = {

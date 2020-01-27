@@ -1,8 +1,8 @@
 import { post, get } from './call'
 
 const ProductsApiService = {
-  search: (searchTerm) =>
-    post('products/search', { text: searchTerm }),
+  search: (searchTerm, aggregation) =>
+    post('products/search', { text: searchTerm, aggregation: aggregation }),
 
   list: () =>
     get('products')
