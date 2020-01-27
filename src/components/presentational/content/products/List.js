@@ -20,20 +20,20 @@ const listItems = (products) => {
 }
 
 const List = ({ products }) => {
-  if (!products) {
-    return <CircleSpinner />
-  }
-
   return (
     <Layout
       displayNav={true}
     >
       <Container>
-        <GridRow>
-          {
-            listItems(products)
-          }
-        </GridRow>
+        {!products ?
+          <CircleSpinner />
+        :
+          <GridRow>
+            {
+              listItems(products)
+            }
+          </GridRow>
+        }
       </Container>
     </Layout>
   )

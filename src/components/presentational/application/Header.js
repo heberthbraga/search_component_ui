@@ -2,12 +2,14 @@ import React from 'react'
 import styled from 'styled-components'
 
 import SearchComponent from '../../container/products/SearchComponent'
+import LogoComponent from '../../container/application/LogoComponent'
 
 import SignInNav from '../navigation/SignInNav'
 
 const Header = ({}) => (
   <Container>
     <NavLeft>
+      <LogoComponent />
     </NavLeft>
     <SearchBar>
       <SearchComponent />
@@ -30,6 +32,8 @@ const Container = styled.header`
 const NavLeft = styled.div`
   width: 10%;
   height: 100%;
+  display: flex;
+  justify-content: center;
 `
 
 const SearchBar = styled.div`

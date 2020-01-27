@@ -21,6 +21,11 @@ const reducer = (state=initialState, action) => {
     }
   }
 
+  if (action.type === types.REDIRECT_TO_HOME) {
+    const { routing } = state
+    state = { routing } 
+  }
+
   return state
 }
 
