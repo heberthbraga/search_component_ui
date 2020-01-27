@@ -3,6 +3,15 @@ import React from 'react'
 import styled from 'styled-components'
 
 import CheckboxComponent from '../../container/shared/CheckboxComponent'
+import { priceOptions } from '../../../helpers'
+
+const loadPriceOptions = () => {
+  return priceOptions.map((opt) => {
+    return (
+      <CheckboxComponent key={opt.id} name="price" label={opt.label} value={opt.id} />
+    )
+  })
+}
 
 const Nav = ({ countries }) => (
   <Container>
@@ -10,9 +19,9 @@ const Nav = ({ countries }) => (
       <PriceFilterBox>
         <Title>Price</Title>
         <Content>
-          <CheckboxComponent name="price" label="$50" value="1" />
-          <CheckboxComponent name="price" label="$50 to $200" value="2" />
-          <CheckboxComponent name="price" label="$200" value="3" />
+          {
+            loadPriceOptions()
+          }
         </Content>
       </PriceFilterBox>
       <CountryFilterBox>

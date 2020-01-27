@@ -35,3 +35,21 @@ export const sortOptions = {
     }
   ]
 }
+
+export const priceOptions = [
+  {
+    id: '1',
+    label: '$50',
+    checked: false
+  },
+  {
+    id: '2',
+    label: '$50 to $200',
+    checked: false
+  },
+  {
+    id: '3',
+    label: '$200',
+    checked: false
+  }
+]
