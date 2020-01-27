@@ -19,8 +19,6 @@ class App extends Component {
 
     const aggs = aggregation ? aggregation : { price: [], country_code: [], sort_option: sortOptions.default.value }
 
-    console.log(aggs)
-
     this.props.initAggregation(aggs)
   }
 

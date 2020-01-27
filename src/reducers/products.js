@@ -45,8 +45,7 @@ const reducer = (state=initialState, action) => {
     return {
       ...state,
       aggregation: { 
-        ...state.aggregation,
-        country_code: state.aggregation.country_code.concat(action.payload)
+        ...state.aggregation
       }
     }
   }

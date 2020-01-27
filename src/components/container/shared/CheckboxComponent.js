@@ -31,19 +31,17 @@ class CheckboxComponent extends Component {
     //   changePage()
     // }
 
-    const { handleFilter } = this.props
+    // const { handleFilter } = this.props
 
     const value = e.target.value
     const checked = e.target.checked
 
-    if (checked) {
-      this.setState({ checked })
-      handleFilter(value)
-    }
-  }
+    this.setState({ checked })
 
-  componentWillReceiveProps(nextProps) {
-    // console.log("nextProps", nextProps)
+    // if (checked) {
+    //   this.setState({ checked })
+    //   handleFilter(value)
+    // }
   }
 
   render() {
