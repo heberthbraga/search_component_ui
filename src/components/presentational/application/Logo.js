@@ -8,7 +8,7 @@ const Logo = ({ handleClick }) => (
   <WrapperLink
     onClick={handleClick}
   >
-    <LogoImage src={reactLogo} />
+    <LogoImage />
   </WrapperLink>
 )
 
@@ -17,7 +17,7 @@ const WrapperLink = styled.span`
   cursor: pointer;
 `
 
-const LogoImage = styled.img`
+const LogoImage = styled.img.attrs({ src: reactLogo })`
   height: 75px;
   width: 75px;
   padding-bottom: 12px;

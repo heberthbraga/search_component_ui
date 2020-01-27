@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { push } from 'connected-react-router'
 
-import Checkbox from '../../presentational/shared/Checkbox'
+import CustomCheckbox from '../../presentational/shared/CustomCheckbox'
 
 import * as productActions from '../../../actions/products'
 
@@ -12,34 +12,49 @@ class CheckboxComponent extends Component {
     super(props)
 
     this.state = {
-      checked: false
+      checkedItems: new Map()
     }
   }
 
-  handleCheckboxChange = e => {
-    const { searchTerm, search, changePage } = this.props
+  handleCheckboxChange = (e) => {
+    // const checked = e.target.checked
 
-    let aggregation = {}
+    // this.setState({ checked: checked })
 
-    aggregation[e.target.name] = e.target.value
+    // if (checked) {
+    //   const { searchTerm, search, changePage } = this.props
+    //   let aggregation = {}
 
-    this.setState({ checked: e.target.checked })
+    //   aggregation[e.target.name] = e.target.value
 
-    search(searchTerm, aggregation)
-    changePage()
+    //   search(searchTerm, aggregation)
+    //   changePage()
+    // }
+
+    const item = e.target.name
+    const checked = e.target.checked
+
+    this.setState(prevState => ({ checkedItems: prevState.checkedItems.set(item, checked) }))
   }
 
   render() {
-    const { className, label, value } = this.props
+    const { name, label, value } = this.props
 
     return(
-      <Checkbox
-        className={className}
+      <CustomCheckbox 
+        name={name}
         label={label}
         value={value}
-        checked={this.state.checked}
-        onChange={this.handleCheckboxChange}
+        checked={this.state.checkedItems.get(name)}
+        handleChange={this.handleCheckboxChange}
       />
+      // <Checkbox
+      //   className={className}
+      //   label={label}
+      //   value={value}
+      //   checked={this.state.checked}
+      //   onChange={this.handleCheckboxChange}
+      // />
     )
   }
 }

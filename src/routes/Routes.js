@@ -6,7 +6,9 @@ import ProductListComponent from '../components/container/products/ProductListCo
 
 export const Routes = props => (
   <Switch>
-    <Route path="/search" component={ProductListComponent} />
+    <Route path="/search">
+      <ProductListComponent action="search" />
+    </Route>
     <Route path="/" component={Home} />
   </Switch>
 )

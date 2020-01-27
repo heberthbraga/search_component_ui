@@ -5,6 +5,8 @@ import styled from 'styled-components'
 import Layout from '../../application/Layout'
 import CircleSpinner from '../../shared/CircleSpinner'
 
+import { handleSearchInfo } from '../../../../helpers'
+
 const listItems = (products) => {
   return products.map((p) => {
     return (
@@ -19,10 +21,17 @@ const listItems = (products) => {
   })
 }
 
-const List = ({ products }) => {
+const List = ({ products, action, searchTerm }) => {
+  const searchInfo = handleSearchInfo(products, searchTerm)
+  const handleAction = {
+    path: 'search',
+    info: searchInfo
+  }
+
   return (
     <Layout
       displayNav={true}
+      handleAction={handleAction}
     >
       <Container>
         {!products ?

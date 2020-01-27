@@ -10,9 +10,9 @@ const Nav = ({ countries }) => (
       <PriceFilterBox>
         <Title>Price</Title>
         <Content>
-          <CheckboxComponent className="price" label="$50" value="1" />
-          <CheckboxComponent className="price" label="$50 to $200" value="2" />
-          <CheckboxComponent className="price" label="$200" value="3" />
+          <CheckboxComponent name="price" label="$50" value="1" />
+          <CheckboxComponent name="price" label="$50 to $200" value="2" />
+          <CheckboxComponent name="price" label="$200" value="3" />
         </Content>
       </PriceFilterBox>
       <CountryFilterBox>
@@ -23,7 +23,7 @@ const Nav = ({ countries }) => (
               return (
                 <CheckboxComponent 
                   key={country.id} 
-                  className="country_code"
+                  name="country_code"
                   label={country.name} 
                   value={country.code}
                 />

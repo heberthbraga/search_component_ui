@@ -5,18 +5,21 @@ import List from '../../presentational/content/products/List'
 
 class ProductListComponent extends Component {
   render() {
-    const { products } = this.props
+    const { products, action, searchTerm } = this.props
 
     return (
       <List 
         products={products}
+        action={action}
+        searchTerm={searchTerm}
       />
     )
   }
 }
 
 const mapStateToProps = state => ({
-  products: state.products.list
+  products: state.products.list,
+  searchTerm: state.products.searchTerm
 })
 
 export default connect(mapStateToProps)(ProductListComponent)
