@@ -17,7 +17,11 @@ class App extends Component {
 
     const { aggregation } = this.props
 
-    this.props.initAggregation(aggregation)
+    const aggs = aggregation ? aggregation : { price: [], country_code: [], sort_option: sortOptions.default.value }
+
+    console.log(aggs)
+
+    this.props.initAggregation(aggs)
   }
 
   componentWillUnmount() {
