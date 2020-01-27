@@ -12,8 +12,9 @@ const loadOptions = (options) => (
   })
 )
 
-const SelectBox = ({ handleSelect }) => (
+const SelectBox = ({ selected, handleSelect }) => (
   <Select
+    value={selected}
     name="sort"
     onChange={handleSelect}
   >

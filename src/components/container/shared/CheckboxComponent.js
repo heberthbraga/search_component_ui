@@ -12,7 +12,7 @@ class CheckboxComponent extends Component {
     super(props)
 
     this.state = {
-      checkedItems: new Map()
+      checked: false
     }
   }
 
@@ -31,40 +31,45 @@ class CheckboxComponent extends Component {
     //   changePage()
     // }
 
-    const item = e.target.name
+    const { handleFilter } = this.props
+
+    const value = e.target.value
     const checked = e.target.checked
 
-    this.setState(prevState => ({ checkedItems: prevState.checkedItems.set(item, checked) }))
+    if (checked) {
+      this.setState({ checked })
+      handleFilter(value)
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    // console.log("nextProps", nextProps)
   }
 
   render() {
     const { name, label, value } = this.props
+    const { checked } = this.state
 
     return(
       <CustomCheckbox 
         name={name}
         label={label}
         value={value}
-        checked={this.state.checkedItems.get(name)}
+        checked={checked}
         handleChange={this.handleCheckboxChange}
       />
-      // <Checkbox
-      //   className={className}
-      //   label={label}
-      //   value={value}
-      //   checked={this.state.checked}
-      //   onChange={this.handleCheckboxChange}
-      // />
     )
   }
 }
 
 const mapStateToProps = state => ({
-  searchTerm: state.products.searchTerm
+  searchTerm: state.products.searchTerm,
+  aggregation: state.products.aggregation
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   changePage: () => push('/search'),
+  handleFilter: (value) => productActions.handleFilter(value),
   search: (searchTerm, aggregation) => productActions.search(searchTerm, aggregation)
 }, dispatch)
 

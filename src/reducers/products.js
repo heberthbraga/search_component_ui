@@ -34,7 +34,27 @@ const reducer = (state=initialState, action) => {
   if (action.type === types.SORT_PRODUCTS) {
     return {
       ...state,
-      aggregation: { sort_option: action.payload }
+      aggregation: {
+        ...state.aggregation,
+        sort_option: action.payload
+      }
+    }
+  }
+
+  if (action.type === types.FILTER_PRODUCTS) {
+    return {
+      ...state,
+      aggregation: { 
+        ...state.aggregation,
+        country_code: state.aggregation.country_code.concat(action.payload)
+      }
+    }
+  }
+
+  if (action.type === types.INIT_AGGREGATION) {
+    return {
+      ...state,
+      aggregation: action.payload
     }
   }
 

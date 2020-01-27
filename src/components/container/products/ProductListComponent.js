@@ -19,7 +19,8 @@ class ProductListComponent extends Component {
 
 const mapStateToProps = state => ({
   products: state.products.list,
-  searchTerm: state.products.searchTerm
+  searchTerm: state.products.searchTerm,
+  aggregation: state.products.aggregation
 })
 
 export default connect(mapStateToProps)(ProductListComponent)

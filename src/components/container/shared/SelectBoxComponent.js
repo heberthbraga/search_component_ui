@@ -35,8 +35,13 @@ class SelectBoxComponent extends Component {
   }
 
   render() {
+    const { aggregation } = this.props
+
+    const selected = aggregation && aggregation.sort_option ? aggregation.sort_option : ''
+
     return(
       <SelectBox 
+        selected={selected}
         handleSelect={this.handleSelect}
       />
     )
