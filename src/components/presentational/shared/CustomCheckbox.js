@@ -6,14 +6,12 @@ const CustomCheckbox = ({
   name, 
   label, 
   value, 
-  checked, 
   handleChange 
 }) => (
   <Label>
     <CheckboxContainer>
       <Checkbox 
-        name={name} 
-        checked={checked} 
+        name={name}  
         value={value} 
         onChange={handleChange} 
       />

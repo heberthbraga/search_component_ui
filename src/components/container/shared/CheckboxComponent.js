@@ -6,55 +6,53 @@ import { push } from 'connected-react-router'
 import CustomCheckbox from '../../presentational/shared/CustomCheckbox'
 
 import * as productActions from '../../../actions/products'
+import * as filterActions from '../../../actions/filter'
 
 class CheckboxComponent extends Component {
   constructor(props) {
     super(props)
 
-    this.state = {
-      checked: false
+    this.handleFilter = this.handleFilter.bind(this)
+  }
+
+  handleCountryFilter = (e) => {
+    let type = e.target.value
+    
+    if (e.target.checked) {
+      this.props.addCountryFilter(type)
+    } else {
+      console.log(type)
+      this.props.removeCountryFilter(type)
     }
   }
 
-  handleCheckboxChange = (e) => {
-    // const checked = e.target.checked
+  handlePriceFilter = (e) => {
+    let type = e.target.value
+    
+    if (e.target.checked) {
+      this.props.addPriceFilter(type)
+    } else {
+      this.props.removePriceFilter(type)
+    }
+  }
 
-    // this.setState({ checked: checked })
-
-    // if (checked) {
-    //   const { searchTerm, search, changePage } = this.props
-    //   let aggregation = {}
-
-    //   aggregation[e.target.name] = e.target.value
-
-    //   search(searchTerm, aggregation)
-    //   changePage()
-    // }
-
-    // const { handleFilter } = this.props
-
-    const value = e.target.value
-    const checked = e.target.checked
-
-    this.setState({ checked })
-
-    // if (checked) {
-    //   this.setState({ checked })
-    //   handleFilter(value)
-    // }
+  handleFilter = (name) => (e) => {
+    if (name === 'country_code') {
+      this.handleCountryFilter(e)
+    } else if (name === 'price') {
+      this.handlePriceFilter(e)
+    }
   }
 
   render() {
     const { name, label, value } = this.props
-    const { checked } = this.state
 
     return(
       <CustomCheckbox 
         name={name}
         label={label}
         value={value}
-        checked={checked}
-        handleChange={this.handleCheckboxChange}
+        handleChange={this.handleFilter(name)}
       />
     )
   }
@@ -67,7 +65,10 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   changePage: () => push('/search'),
-  handleFilter: (value) => productActions.handleFilter(value),
+  addPriceFilter: (type) => filterActions.addPriceFilter(type),
+  removePriceFilter: (type) => filterActions.removePriceFilter(type),
+  addCountryFilter: (type) => filterActions.addCountryFilter(type),
+  removeCountryFilter: (type) => filterActions.removeCountryFilter(type),
   search: (searchTerm, aggregation) => productActions.search(searchTerm, aggregation)
 }, dispatch)
 

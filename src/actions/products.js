@@ -18,6 +18,4 @@ export const search = (searchTerm, aggregation) => dispatch => {
 
 export const handleSortOption = (option) => dispatch => ( dispatch({ type: types.SORT_PRODUCTS, payload: option }) )
 
-export const handleFilter = (value) => dispatch => ( dispatch({ type: types.FILTER_PRODUCTS, payload: value }) )
-
 export const initAggregation = (aggregation) => dispatch => ( dispatch({ type: types.INIT_AGGREGATION, payload: aggregation }) )

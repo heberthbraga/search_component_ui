@@ -4,7 +4,7 @@ const initialState={
   list: [],
   searchTerm: '',
   aggregation: {
-    price: [],
+    price_option: [],
     country_code: [],
     sort_option: ''
   }
@@ -41,11 +41,60 @@ const reducer = (state=initialState, action) => {
     }
   }
 
-  if (action.type === types.FILTER_PRODUCTS) {
+  if (action.type === types.ADD_COUNTRY_FILTER) {
     return {
       ...state,
-      aggregation: { 
-        ...state.aggregation
+      aggregation: {
+        country_code: [
+          ...state.aggregation.country_code,
+          action.payload
+        ],
+        price_option: [
+          ...state.aggregation.price_option
+        ]
+      }
+    }
+  }
+
+  if (action.type === types.REMOVE_COUNTRY_FILTER) {
+    const newCountryFilter = state.aggregation.country_code.filter((code) => code !== action.payload)
+    
+    return {
+      ...state,
+      aggregation: {
+        country_code: newCountryFilter,
+        price_option: [
+          ...state.aggregation.price_option
+        ]
+      }
+    }
+  }
+
+  if (action.type === types.ADD_PRICE_FILTER) {
+    return {
+      ...state,
+      aggregation: {
+        country_code: [
+          ...state.aggregation.country_code,
+        ],
+        price_option: [
+          ...state.aggregation.price_option,
+          action.payload
+        ]
+      }
+    }
+  }
+
+  if (action.type === types.REMOVE_PRICE_FILTER) {
+    const newPriceFilter = state.aggregation.price_option.filter((value) => value !== action.payload)
+    
+    return {
+      ...state,
+      aggregation: {
+        country_code: [
+          ...state.aggregation.country_code
+        ],
+        price_option: newPriceFilter
       }
     }
   }
