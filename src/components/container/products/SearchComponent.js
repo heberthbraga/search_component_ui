@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { push } from 'connected-react-router'
+import { Redirects } from '../../../routes'
 
 import * as actions from '../../../actions/products'
 
@@ -25,6 +25,10 @@ class SearchComponent extends Component {
     changePage()
   }
 
+  openDetails = () => {
+    return 'details'
+  }
+
   render() {
     const { searchTerm } = this.props
 
@@ -44,7 +48,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  changePage: () => push('/search'),
+  changePage: () => Redirects.gotToSearch(),
   search: (searchTerm, aggregation) => actions.search(searchTerm, aggregation)
 }, dispatch)
 

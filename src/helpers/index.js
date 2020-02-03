@@ -8,7 +8,7 @@ export const history = createBrowserHistory()
 export const refreshHistory = createBrowserHistory({ forceRefresh: true })
 
 const targetTerm = (term) => ( term ? term : '')
-const numberOfItems = (items) => ( items ? items.length : '')
+const numberOfItems = (items) => ( items ? items.data.length : '')
 
 export const handleSearchInfo = (items, term) => ( { length: numberOfItems(items), term: targetTerm(term) } )
 

@@ -1,30 +1,32 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 
 import styled from 'styled-components'
 
 import Layout from '../../application/Layout'
 import CircleSpinner from '../../shared/CircleSpinner'
+import DefaultPagination from '../../shared/DefaultPagination'
 
 import { handleSearchInfo } from '../../../../helpers'
 
 const listItems = (products) => {
-  return products.map((p) => {
+  return products.data.map((product) => {
     return (
-      <GridItem key={p.id}>
+      <GridItem key={product.id}>
         <GridItemContent>
-          <h3>{p.title}</h3>
-          <p>${p.price}</p>
-          <p>{p.description}</p>
+          <h3>{product.attributes.title}</h3>
+          <p>${product.attributes.price}</p>
+          <p>{product.attributes.description}</p>
         </GridItemContent>
       </GridItem>
     )
   })
 }
 
-const List = ({ products, action, searchTerm }) => {
+const List = ({ products, action, searchTerm, onPageChange }) => {
+  const { pagination } = products
   const searchInfo = handleSearchInfo(products, searchTerm)
   const handleAction = {
-    path: 'search',
+    path: action,
     info: searchInfo
   }
 
@@ -37,11 +39,20 @@ const List = ({ products, action, searchTerm }) => {
         {!products ?
           <CircleSpinner />
         :
-          <GridRow>
-            {
-              listItems(products)
+          <Fragment>
+            <GridRow>
+              {
+                listItems(products)
+              }
+            </GridRow>
+            {pagination &&
+              <DefaultPagination 
+                currentPage={pagination.page}
+                totalPages={pagination.total_pages}
+                onPageChange={onPageChange} 
+              />
             }
-          </GridRow>
+          </Fragment>
         }
       </Container>
     </Layout>

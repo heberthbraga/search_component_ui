@@ -2,12 +2,12 @@ import types from '../types'
 
 import ProductsApiService from '../api/products'
 
-export const search = (searchTerm, aggregation) => dispatch => {
-  console.log("Start searching term and aggregation ", searchTerm + ', ' + JSON.stringify(aggregation))
+export const search = (searchTerm, aggregation, currentPage='1') => dispatch => {
+  console.log("Start searching term, aggregation and page", searchTerm + ', ' + JSON.stringify(aggregation) + ', ' + currentPage)
 
   dispatch({ type: types.SEARCH_TERM, payload: searchTerm })
 
-  ProductsApiService.search(searchTerm, aggregation).then(
+  ProductsApiService.search(searchTerm, aggregation, currentPage).then(
     res => {
       console.log("Search response: ", res)
 

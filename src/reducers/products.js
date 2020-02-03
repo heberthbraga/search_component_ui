@@ -15,7 +15,10 @@ const reducer = (state=initialState, action) => {
   if (action.type === types.SEARCH_PRODUCTS) {
     return {
       ...state,
-      list: action.payload
+      list: {
+        data: action.payload.data,
+        pagination: action.payload.meta
+      }
     }
   }
 

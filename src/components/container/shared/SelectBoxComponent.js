@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { push } from 'connected-react-router'
+import { Redirects } from '../../../routes'
 
 import * as productActions from '../../../actions/products'
 
@@ -54,7 +54,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  changePage: () => push('/search'),
+  changePage: () => Redirects.gotToSearch(),
   handleSortOption: (option) => productActions.handleSortOption(option), 
   search: (searchTerm, aggregation) => productActions.search(searchTerm, aggregation)
 }, dispatch)

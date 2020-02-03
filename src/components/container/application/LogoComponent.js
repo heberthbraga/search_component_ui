@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { push } from 'connected-react-router'
+import { Redirects } from '../../../routes'
 
 import Logo from '../../presentational/application/Logo'
 
@@ -33,7 +33,7 @@ class LogoComponent extends Component {
 }
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  changePage: () => push('/'),
+  changePage: () => Redirects.goToHome(),
   redirectToHome: () => appActions.goToHome()
 }, dispatch)
 

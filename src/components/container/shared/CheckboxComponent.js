@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { push } from 'connected-react-router'
+import { Redirects } from '../../../routes'
 
 import CustomCheckbox from '../../presentational/shared/CustomCheckbox'
 
@@ -64,7 +64,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  changePage: () => push('/search'),
+  changePage: () => Redirects.gotToSearch(),
   addPriceFilter: (type) => filterActions.addPriceFilter(type),
   removePriceFilter: (type) => filterActions.removePriceFilter(type),
   addCountryFilter: (type) => filterActions.addCountryFilter(type),
