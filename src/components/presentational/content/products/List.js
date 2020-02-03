@@ -23,7 +23,6 @@ const listItems = (products) => {
 }
 
 const List = ({ products, action, searchTerm, onPageChange }) => {
-  const { pagination } = products
   const searchInfo = handleSearchInfo(products, searchTerm)
   const handleAction = {
     path: action,
@@ -45,13 +44,10 @@ const List = ({ products, action, searchTerm, onPageChange }) => {
                 listItems(products)
               }
             </GridRow>
-            {pagination &&
-              <DefaultPagination 
-                currentPage={pagination.page}
-                totalPages={pagination.total_pages}
-                onPageChange={onPageChange} 
-              />
-            }
+            <DefaultPagination 
+              pagination={products.pagination}
+              onPageChange={onPageChange}
+            />
           </Fragment>
         }
       </Container>

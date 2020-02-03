@@ -7,16 +7,20 @@ import { Pagination } from '@zendeskgarden/react-pagination';
 
 import styled from 'styled-components'
 
-const DefaultPagination = ({ currentPage, totalPages, onPageChange }) => (
-  <Container>
-    <ThemeProvider>
-      <Pagination 
-        totalPages={totalPages} 
-        currentPage={currentPage} 
-        onChange={onPageChange} />
-    </ThemeProvider>
-  </Container>
-)
+const DefaultPagination = ({ pagination, onPageChange }) => {
+  const { page, total_pages } = pagination
+
+  return (
+    <Container>
+      <ThemeProvider>
+        <Pagination 
+          totalPages={total_pages} 
+          currentPage={page} 
+          onChange={onPageChange} />
+      </ThemeProvider>
+    </Container>
+  )
+}
 
 const Container = styled.div`
   padding: 10px;
